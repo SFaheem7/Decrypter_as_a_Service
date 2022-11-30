@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Swagger Decrypter - OpenAPI 3.0
+  description: |-
+    This is a Decrypter Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). 
+    
+    Some useful links:
+    - [The Decrypter as a Service repository](https://github.com/swagger-api/swagger-petstore)
+    
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 2.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://1998xrpdtj.execute-api.us-east-1.amazonaws.com
+paths:
+  /decrypter/{shaHash}:
+    get:
+      summary: Finds plaintext Password based on hash provided
+      operationId: findPasswordByHash
+      parameters:
+        - name: shaHash
+          in: path
+          description: Encrypted hash value of 3 letter passwords
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid status value
+      
+  
